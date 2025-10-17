@@ -243,7 +243,7 @@ export default function Home() {
   const BlockImage = React.memo(
     ({ src, name }: { src: string; name: string }) => {
       return (
-        <div className="w-[200px] h-[80px] relative flex items-center justify-center">
+        <div className="w-[120px] h-[48px] sm:w-[160px] sm:h-[64px] md:w-[200px] md:h-[80px] relative flex items-center justify-center">
           <img 
             src={src} 
             alt={name}
@@ -376,7 +376,7 @@ export default function Home() {
     canEdit: boolean
   }) => {
     return (
-      <div className="flex flex-row gap-4 justify-start flex-wrap">
+      <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 justify-center sm:justify-start flex-wrap max-w-full px-2 sm:px-4">
         {blocks.map((b) => (
           <BlockItem
             key={b.id}
@@ -401,12 +401,12 @@ export default function Home() {
       <img
         src={selected.src}
         alt={`Selected ${selected.name}`}
-        className="w-[400px] h-[200px] object-contain"
+        className="w-[240px] h-[120px] sm:w-[320px] sm:h-[160px] md:w-[400px] md:h-[200px] object-contain"
         draggable={false}
         loading="eager"
       />
     ) : (
-      <div className="w-[400px] h-[200px] flex items-center justify-center border-2 border-dashed border-[#81523F] rounded-lg">
+      <div className="w-[240px] h-[120px] sm:w-[320px] sm:h-[160px] md:w-[400px] md:h-[200px] flex items-center justify-center border-2 border-dashed border-[#81523F] rounded-lg">
         Randomize Block
       </div>
     );
@@ -418,7 +418,7 @@ export default function Home() {
   SelectedBlock.displayName = 'SelectedBlock';
 
   return (
-    <main className="h-screen flex flex-col justify-content-center align-items-center overflow-auto p-8 bg-[#FFFBBD] text-[#81523F] text-2xl font-bold">
+    <main className="min-h-screen flex flex-col justify-content-center align-items-center overflow-x-hidden overflow-y-auto pb-32 p-4 sm:p-6 md:p-8 bg-[#FFFBBD] text-[#81523F] text-xl sm:text-2xl font-bold">
       <BlocksList 
         blocks={blocks} 
         canEdit={!hasStarted}
@@ -475,27 +475,27 @@ export default function Home() {
       </div>
 
       {hasStarted && totalRemaining > 0 && (
-        <div className="mt-8">
+        <div className="mt-4 sm:mt-8">
           <button
             onClick={handleReset}
-            className="cursor-pointer px-4 py-2 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 active:bg-red-700 transition-colors duration-200 shadow-md hover:shadow-lg"
+            className="cursor-pointer px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 active:bg-red-700 transition-colors duration-200 shadow-md hover:shadow-lg text-sm sm:text-base"
           >
             Reset
           </button>
         </div>
       )}
       {/* Tokopedia Buy Button */}
-      <div className="fixed right-6 bottom-6 z-50 flex flex-col items-end">
+      <div className="fixed right-2 sm:right-6 bottom-2 sm:bottom-6 z-50 flex flex-col items-end">
         <a
           href="https://tk.tokopedia.com/ZSUx1qjPq/"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-6 py-3 rounded-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold shadow-lg text-lg transition-colors duration-200 flex items-center gap-2"
+          className="px-3 sm:px-6 py-2 sm:py-3 rounded-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold shadow-lg text-sm sm:text-lg transition-colors duration-200 flex items-center gap-2"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 10l1.5 9a1 1 0 001 .9h13a1 1 0 001-.9L21 10M16 10V6a4 4 0 10-8 0v4" />
           </svg>
-          Beli Tetris Balance Game
+          <span className="whitespace-nowrap">Beli Tetris Balance Game</span>
         </a>
       </div>
     </main>
